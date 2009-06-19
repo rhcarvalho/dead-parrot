@@ -80,9 +80,12 @@ class CharField(Field):
     max_length = None
     vartype = unicode
     def __init__(self, *args, **kw):
-        max_length = kw.pop('max_length', None)
+        if 'max_length' not in kw:
+            raise TypeError, (u"%s required max_length argument expected" %
+                              (self.__class__.__name__,))
+        max_length = kw.pop('max_length')
         if not isinstance(max_length, int):
-            raise TypeError, u"%s.max_length param must be a int" \
+            raise TypeError, u"%s.max_length param must be an int" \
                   " got a %r (%r)" % \
                   (self.__class__.__name__,
                    type(max_length), max_length)
