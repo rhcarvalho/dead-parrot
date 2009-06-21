@@ -3,8 +3,8 @@ What is the Dead Parrot?
 
 Dead Parrot is a RESTful framework with the declarative approach of Django
 Models in mind. Describing a class and its fields, you can tailor the
-serialization/deserialization of your model in several formats, including XML
-and JSON.
+serialization/deserialization of your model in several formats, including XML,
+JSON and YAML.
 
 The project has been conceived to allow for custom-tailored format-styles
 and/or serializers, model-aware data validation and other extensibility points.
@@ -60,16 +60,19 @@ They can be obtained from the following sites:
 
 * lxml for XML serialization: http://codespeak.net/lxml/
 * simplejson for JSON serialization: http://pypi.python.org/pypi/simplejson/
+* PyYAML for YAML serialization: http://pyyaml.org/
 
 Or, to install those in Debian/Ubuntu::
 
     aptitude install python-lxml
     aptitude install python-simplejson
+    aptitude install python-yaml
 
 Alternatively, you may use easy_install_ when available::
 
     easy_install lxml
     easy_install simplejson
+    easy_install pyyaml
 
 Hands On!
 =========

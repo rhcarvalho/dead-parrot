@@ -20,6 +20,7 @@
 import unittest
 import pmock
 import simplejson
+import yaml
 
 from urllib2 import URLError
 
@@ -31,6 +32,7 @@ from deadparrot.models import fields, Model
 from deadparrot.serialization import Registry
 from deadparrot.serialization.plugins.json import JSONSerializer
 from deadparrot.serialization.plugins.xml import XMLSerializer
+from deadparrot.serialization.plugins.yaml import YAMLSerializer
 from deadparrot.serialization.plugins.base import Serializer
 
 from utils import one_line_xml
@@ -106,6 +108,31 @@ class TestXMLSerializer(unittest.TestCase):
     def test_fail_as_object(self):
         xml = XMLSerializer({'blah': set(range(10))})
         self.assertRaises(TypeError, xml.as_object)
+
+class TestYAMLSerializer(unittest.TestCase):
+    my_library = [{
+        'Book': {
+            'Title': u'The 4-Hour Workweek',
+            'Author': u'Timothy Ferriss',
+            'Price': u'US$ 13.57'
+        }
+    }, {
+        'Book': {
+            'Title': u'Blink: The Power of Thinking Without Thinking',
+            'Author': u'Malcolm Gladwell',
+            'Price': u'US$ 16.35'
+        }
+    }]
+    
+    def test_serialization(self):
+        yaml_serializer = YAMLSerializer(self.my_library)
+        self.assertEquals(yaml_serializer.serialize(),
+                          yaml.dump(self.my_library))
+
+    def test_deserialization(self):
+        yaml_string = yaml.dump(self.my_library)
+        self.assertEquals(YAMLSerializer.deserialize(yaml_string),
+                          self.my_library)
 
 class TestSerializersRegistry(unittest.TestCase):
     my_dict = {
