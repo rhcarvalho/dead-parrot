@@ -1,54 +1,60 @@
-What is the Dead Parrot ?
-=========================
+What is the Dead Parrot?
+========================
 
 Dead Parrot is a RESTful framework with the declarative approach of Django
 Models in mind. Describing a class and its fields, you can tailor the
-serialization/deserialization of your model in several formats, including xml and json.
+serialization/deserialization of your model in several formats, including XML
+and JSON.
 
-The project has been conceived to allow for custom-tailored format-styles and/or
-serializers, model-aware data validation and other extensibility points. One key goal
-for the project is removing the dependency that current tools have on the large Django stack.
+The project has been conceived to allow for custom-tailored format-styles
+and/or serializers, model-aware data validation and other extensibility points.
+One key goal for the project is removing the dependency that current tools have
+on the large Django stack.
 
-Dead Parrot uses a much thinner layer to serve and consume its resources.
-A standalone web server, based on the CherryPy_ project is included to serve resources,
-as well as a client layer based in the Django queryset manager.
+Dead Parrot uses a much thinner layer to serve and consume its resources. A
+standalone web server, based on the CherryPy_ project is included to serve
+resources, as well as a client layer based in the Django QuerySet Manager.
 
 Why "Dead Parrot"
 =================
 
-It's a tribute to one of my favorite Monty Python's sketch. In the sketch
-a customer tries to exchange his parrot, that have been bought dead, and
-then he argues with the seller.
+It's a tribute to one of my favorite Monty Python's sketchs. In this sketch a
+customer tries to exchange his parrot, that have been bought dead, and then he
+argues with the seller.
 
 Goals
 =====
 
-* Provide a plugin-based pool of serializers, so you write yout model
-  once, but deals with {de}serialization in many formats.
+* Provide a plugin-based pool of serializers, so you write your model once, but
+  deals with {de}serialization in many formats.
 
-* Dead Parrot is a library that reaches both server and client tiers,
-  so that it can be the "seller" as the server providing a RESTful
-  API, and also the "customer" consuming the API.
+* Dead Parrot is a library that reaches both server and client tiers, so that
+  it can be the "seller" as the server providing a RESTful API, and also the
+  "customer" consuming the API.
 
-* Dead Parrot also means to support database access through
-  SQLAlchemy, but for the programmer, it will be transparent, and
-  will feel like coding in Django.
+* Dead Parrot also means to support database access through SQLAlchemy, but for
+  the programmer, it will be transparent, and will feel like coding in Django.
 
-Release plans
+Release Plans
 =============
 
-As long as Dead Parrot is also a Monty Python's sketch, its release
-names are sentences spoken by the actors, the odd numbered releases
-are "the customer" phrases, and the even ones are from "the seller".
+As long as Dead Parrot is also a Monty Python's sketch, its release names are
+sentences spoken by the actors, the odd numbered releases are "the customer"
+phrases, and the even ones are from "the seller".
 
-* Release HelloPolly (0.1) - Support all django-like model fields, serialization/deserialization on xml/json
-* Release JustResting (0.2) - Embed a CherryPy serving RESTful resources, with a model-like declarative approach to resources, also support a django-like self-consuming its resources.
+* Release HelloPolly (0.1) - Support all django-like model fields,
+  serialization/deserialization on xml/json
+
+* Release JustResting (0.2) - Embed a CherryPy serving RESTful resources, with
+  a model-like declarative approach to resources, also support a django-like
+  self-consuming its resources.
+
 * Release PassedOn (0.3) - Support SQLAlchemy querying.
 
-Build dependencies:
-===================
+Build Dependencies
+==================
 
-Dead Parrot builds on some very well-known python libraries.
+Dead Parrot builds on some very well-known Python libraries.
 The consequence is that in order to use it, you need those installed.
 They can be obtained from the following sites:
 
@@ -60,9 +66,15 @@ Or, to install those in Debian/Ubuntu::
     aptitude install python-lxml
     aptitude install python-simplejson
 
+Alternatively, you may use easy_install_ when available::
+
+    easy_install lxml
+    easy_install simplejson
+
 Hands On!
-========
-What about doing some serialization ? ::
+=========
+
+What about doing some serialization? ::
 
    >>> from deadparrot import models
    >>>
@@ -90,7 +102,9 @@ What about doing some serialization ? ::
 
 Building
 ========
+
 * In GNU/Linux: make build
 * In other systems: python setup.py test && python setup.py build
 
 .. _CherryPy: http://www.cherrypy.org/
+.. _easy_install: http://peak.telecommunity.com/DevCenter/EasyInstall
