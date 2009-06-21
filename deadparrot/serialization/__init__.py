@@ -28,5 +28,6 @@ class Registry(object):
         try:
             return REGISTRY_DICT[kind]
         except KeyError:
-            raise NotImplementedError, 'The format %r was not implemented ' \
-        "as a serializer plugin for DeadParrot" % kind
+            raise NotImplementedError, ("The format %s was not implemented as "
+                                        "a serializer plugin for DeadParrot" %
+                                        (kind,))
